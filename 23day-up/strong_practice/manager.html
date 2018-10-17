@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello</title>
+</head>
+<body>
+    <h1>欢迎 xxxx!!!!</h1>
+    <script>
+        // http://localhost/study/23day/23day-up/strong_practice/manager.html?username=xinliqing
+        var url = location.search.slice(1);
+        function getParams(url) {
+            var obj = {};
+            url = url.split('&');
+            for(var i = 0; i < url.length; i++) {
+                var str = url[i].split('=');
+                obj[str[0]] = str[1];
+            }
+            return obj;
+        }
+        url = getParams(url);
+        var username = url.username;
+        console.log(username);
+    </script>
+</body>
+</html>

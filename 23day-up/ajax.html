@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax</title>
+    <link rel="stylesheet" href="a.css">
+    <script src="a.js"></script>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <script>
+        var $btn = document.getElementById('btn');
+        $btn.onclick = function() {
+            sendAjax();
+        }
+        // ajax的异步： 
+        //  本身js是单线程，是没有异步
+        //  为什么ajax是异步？
+        // ajax 是向服务器发送请求，事情交给服务器完成，自己还可以做自己的事情。
+        // 通过js的方式向服务器发送请求
+
+        function sendAjax() {
+            // 首先要有一个手机
+            var xhr = new XMLHttpRequest();
+            // 需要电话号码
+            // 请求方式， 请求地址， 是否异步
+            xhr.open('GET', 'login.php', true);
+            // 打通电话， 进行等待
+            xhr.send();
+            // 处理结果（没接通，挂断，接通）
+            /*
+                readystate
+                0: 没有建立连接
+                1: 建立连接
+                2: 发送信息
+                3：等待处理
+                4. 处理完成，返回结果
+                状态码： 用来反馈这一次的处理结果
+    
+    
+            */
+            //   readystate改变出发函数 
+            xhr.onreadystatechange = function () {
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // 得到本次请求的返回结果
+                    console.log(xhr.responseText);
+
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
